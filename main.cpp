@@ -43,3 +43,10 @@ class Stack{
 
 };
 // TODO Сделать обход графа с помощью стека
+// Очередь это First in First out
+// Можно сделать при помощи двух стеков
+class Queue{
+    private:
+        Stack fstack;
+        Stack tstack;
+};
