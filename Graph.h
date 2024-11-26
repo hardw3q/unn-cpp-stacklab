@@ -10,22 +10,24 @@
 
 class Graph
 {
+private:
+    std::unordered_map<std::string, std::unordered_set<std::string>> adjList;
 public:
     void addNode(const std::string &name)
     {
-        adjacencyList[name] = std::unordered_set<std::string>();
+        adjList[name] = std::unordered_set<std::string>();
     }
 
-    void connect(const std::string &from, const std::string &to)
+    void link(const std::string &from, const std::string &to)
     {
-        adjacencyList[from].insert(to);
-        adjacencyList[to].insert(from);
+        adjList[from].insert(to);
+        adjList[to].insert(from);
     }
 
     std::unordered_set<std::string> getNeighbors(const std::string &node) const
     {
-        auto it = adjacencyList.find(node);
-        if (it != adjacencyList.end())
+        auto it = adjList.find(node);
+        if (it != adjList.end())
         {
             return it->second;
         }
@@ -34,7 +36,7 @@ public:
 
     void printGraph() const
     {
-        for (const auto &pair : adjacencyList)
+        for (const auto &pair : adjList)
         {
             std::cout << pair.first << " -> ";
             for (const auto &neighbor : pair.second)
@@ -44,9 +46,7 @@ public:
             std::cout << std::endl;
         }
     }
-
-private:
-    std::unordered_map<std::string, std::unordered_set<std::string>> adjacencyList;
+    
 };
 
 #endif

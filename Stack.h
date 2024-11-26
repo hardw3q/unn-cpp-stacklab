@@ -11,9 +11,9 @@ private:
     std::vector<T> stack;
 
 public:
-    Stack() {}
+    Stack() = default;
 
-    void push(const T &value)
+    void push(const T& value)
     {
         stack.push_back(value);
     }
@@ -25,29 +25,29 @@ public:
             throw std::out_of_range("Stack is empty");
         }
 
-        T value = stack.back();
+        T value = std::move(stack.back());
         stack.pop_back();
         return value;
     }
 
     void print() const
     {
-        for (size_t i = 0; i < stack.size(); ++i)
+        for (const auto& item : stack)
         {
-            std::cout << stack[i] << " ";
+            std::cout << item << " ";
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
 
-    bool isEmpty() const
+    bool isEmpty() const noexcept
     {
         return stack.empty();
     }
 
-    size_t size() const
+    size_t size() const noexcept
     {
         return stack.size();
     }
 };
 
-#endif
+#endif // STACK_H

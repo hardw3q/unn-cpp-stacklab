@@ -83,16 +83,14 @@ int main()
     graph.addNode("E");
     graph.addNode("F");
     graph.addNode("G");
-    graph.addNode("X");
-    graph.addNode("Z");
 
-    graph.connect("A", "B");
-    graph.connect("A", "C");
-    graph.connect("A", "F");
-    graph.connect("B", "D");
-    graph.connect("B", "E");
-    graph.connect("F", "G");
-    graph.connect("X", "Z");
+
+    graph.link("A", "B");
+    graph.link("A", "C");
+    graph.link("A", "F");
+    graph.link("B", "D");
+    graph.link("B", "E");
+    graph.link("F", "G");
     graph.printGraph();
 
     std::cout << "DFS:" << std::endl;
