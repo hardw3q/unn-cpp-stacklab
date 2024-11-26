@@ -76,20 +76,9 @@ int main()
 {
     Graph graph;
 
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
-    graph.addNode("G");
-
-
-    graph.link("A", "B");
-    graph.link("A", "C");
-    graph.link("A", "F");
-    graph.link("B", "D");
-    graph.link("B", "E");
+    graph.addNodes({"A", "B","C","D","E","F","G"});
+    graph.linkMany("A", {"B","C","F"});
+    graph.linkMany("B", {"D","E"});
     graph.link("F", "G");
     graph.printGraph();
 

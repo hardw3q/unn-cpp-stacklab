@@ -24,6 +24,21 @@ public:
         adjList[to].insert(from);
     }
 
+    void addNodes(const std::vector<std::string> &nodes)
+    {
+        for (const auto &name : nodes)
+        {
+            addNode(name);
+        }
+    }
+    void linkMany(const std::string &from, const std::vector<std::string> &toNodes)
+    {
+        for (const auto &to : toNodes)
+        {
+            link(from, to);
+        }
+    }
+
     std::unordered_set<std::string> getNeighbors(const std::string &node) const
     {
         auto it = adjList.find(node);
